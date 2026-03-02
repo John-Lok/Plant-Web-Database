@@ -1,0 +1,139 @@
+html, body {
+  margin: 0px;
+}
+
+/*-------------------------Main header-------------------------------*/
+.topnav {
+  border-bottom: 4px solid rgb(0, 0, 0);
+  background-color: rgb(56, 56, 56);
+  min-height: 60px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.nav-tabs {
+  min-height: auto;
+
+  /*border between tabs*/
+  border-right: 3px solid rgb(0, 0, 0);
+
+  /*Text tabs properties*/
+  color: rgb(0, 201, 101);
+  font-weight: bold;
+  font-size: 40px;
+  font-family: Arial;
+  text-decoration: none;
+  text-align: center;
+
+  /*Spacing between tabs*/
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/*Design of nav tabs when cursor is hovering over*/
+.nav-tabs:hover {
+  background-color: rgb(118, 118, 118);
+}
+
+.nav-tabs:last-child{
+  border-right: none;
+}
+
+/*=====Logged in profile=====*/
+.profile-container {
+  height: 70px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2px
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+}
+
+/*=====Unlogged in profile=====*/
+.register-login-btn {
+  background-color: rgb(0, 161, 0);
+  padding: 5px;
+  text-align: none;
+  color: white;
+  font-family: 'Arial';
+  font-size: 20px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 0px 5px black;
+}
+
+/*--------------------------------Footer-------------------------------*/
+/*========Main Footer=========*/
+#container {
+  border-color: red; 
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#main {
+  flex: 1;
+}
+
+#footer {
+  background-color: rgb(56, 56, 56);
+  border-top: 4px solid black;
+  padding: 40px;
+}
+
+/*============Contents in footer==============*/
+.mainFlexbox {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*===============Logo and text==============*/
+.logo-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-below-logo { 
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.umlogo {
+  width:60px; 
+  height: 75px;
+
+}
+
+/*==============Browse Link Tabs==============*/
+#browse-link {
+  text-decoration: none;
+  color: white;
+}
+
+.browse-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/*================Contact Link Tabs================*/
+#contact-link {
+  color: white;
+}
+
+/*================Bottom Part of Footer after <hr>================*/
+
+.bottomFlexbox {
+  display: flex;
+  align-items: center;
+}
+
