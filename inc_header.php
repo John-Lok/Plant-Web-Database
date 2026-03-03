@@ -1,20 +1,54 @@
 <body>
-<!--Navigation Header-->
-        <div class="topnav">
-            <a class="nav-tabs" href="index.php">Home</a>
-            <a class="nav-tabs" href="village.php">Village</a>
-            <a class="nav-tabs" href="family.php">Family</a>
-            <a class="nav-tabs" href="#">Use Category</a>
-            <a class="nav-tabs" href="all_species.php" onclick="pagination(1)">All Species</a>
 
-                        
+    <!--Off screen menu container and tabs-->
+    <div class="off-screen-dropdown-menu">
+        <ul style="list-style: none; padding: 0; margin: 0;">
+
+            <li><a href="index.php">Home</a></li><hr>
+            <li><a href="use_category.php">Use Category</a></li><hr>
+            <li><a href="family.php">Family</a></li><hr>
+            <li><a href="location.php">Location</a></li><hr>
+            <li><a href="all_species.php">All Species</a></li><hr>
+
+        </ul>
+    </div>
+
+    <!--Navigation Header Container-->
+    <div class="topnav">
+
+        <!--Hamburger Menu Icon-->
+        <div class="hamburger-menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!--JS logic when clicking the Hamburger Icon-->
+        <script>
+            const hamMenuIcon = document.querySelector(".hamburger-menu-icon"); 
+            const offScreenMenu = document.querySelector(".off-screen-dropdown-menu"); 
+
+            hamMenuIcon.addEventListener("click", () => {
+                offScreenMenu.classList.toggle("active");
+                hamMenuIcon.classList.toggle("active");
+            })
+        </script>
+
+        <!--Navigation Header Title-->
+        <p style="font-size: 50px; color: white; margin: 0px; padding: 0px; ">TITLE</p>
+
+    </div>
+
+</body>
+
+<!--                        
             <button class="register-login-btn" style="margin-left: auto;">
                 <strong>Register</strong>
             </button>
             <button class="register-login-btn" style="margin-left: 8px; margin-right: 8px;">
                 <strong>Log in</strong>
             </button>
-            
+-->            
 <!--
             <a style="margin-left: auto;">
                 <div class="profile-container" >
@@ -23,6 +57,3 @@
                 </div>
             </a>
 -->
-
-        </div>
-</body>

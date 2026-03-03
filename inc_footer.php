@@ -12,9 +12,9 @@
         <div class="browse-container">
             <h3 style="font-family: 'Arial'; color: white">Browse</h3>
             <a id="browse-link" href="index.php">Home</a>
-            <a id="browse-link" href="village.php">Village</a>
+            <a id="browse-link" href="location.php">Location</a>
             <a id="browse-link" href="family.php">Family</a>
-            <a id="browse-link" href="#">Category</a>
+            <a id="browse-link" href="use_category.php">Use Category</a>
             <a id="browse-link" href="all_species.php">All Species</a>
         </div>
 

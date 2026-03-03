@@ -19,7 +19,7 @@
                         include('database_conn.php');
 
                         //the SQL query to retreive the full table's data
-                        $sql = "SELECT * FROM village"; 
+                        $sql = "SELECT * FROM location_area"; 
 
                         $result = mysqli_query($conn, $sql);
 
@@ -30,13 +30,16 @@
                             while($row = mysqli_fetch_assoc($result)){
                                 echo '<div 
                                         class=villageName 
-                                        style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('.$row["village_image"].'); 
-                                               background-size: cover;"
+                                        
                                       >'.'<a href="#">'
-                                        .$row["village_name"].
+                                        .$row["area_name"].
                                      '</a>'.'</div>'.'<br>';
                             }
                         mysqli_close($conn); 
+
+                        //style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('.$row["village_image"].'); 
+                        //                       background-size: cover;"
+
                     ?>
                 </div>
 

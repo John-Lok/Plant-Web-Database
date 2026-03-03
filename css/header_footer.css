@@ -12,35 +12,85 @@ html, body {
   align-items: center;
 }
 
-.nav-tabs {
-  min-height: auto;
 
-  /*border between tabs*/
-  border-right: 3px solid rgb(0, 0, 0);
-
-  /*Text tabs properties*/
-  color: rgb(0, 201, 101);
-  font-weight: bold;
-  font-size: 40px;
-  font-family: Arial;
-  text-decoration: none;
-  text-align: center;
-
-  /*Spacing between tabs*/
-  padding-left: 20px;
-  padding-right: 20px;
+/*=========Off Screen Menu========*/
+/*The lines between the tabs*/
+hr {
+  border: 1.5px solid white;
 }
 
-/*Design of nav tabs when cursor is hovering over*/
-.nav-tabs:hover {
-  background-color: rgb(118, 118, 118);
+/*Off screen menu properties*/
+.off-screen-dropdown-menu {
+  background-color: rgb(56, 56, 56);
+  width: fit-content; 
+  padding: 30px; 
+  padding-bottom: 80px;
+  transition: .4s ease;
+  position: absolute;
+  top: 64px;
+  left: -450px;
+  transition: 0.4s ease;
 }
 
-.nav-tabs:last-child{
-  border-right: none;
+/*Text for the tabs*/
+ul li a {
+  text-decoration: none; 
+  color: white;
+  font-size: 30px;
 }
 
-/*=====Logged in profile=====*/
+/*Off screen menu properties when active*/
+.off-screen-dropdown-menu.active {
+  left: 0;
+  z-index: 10; 
+}
+
+/*========Hamburger Menu Icon=======*/
+/*Hamburger menu icon container*/
+.hamburger-menu-icon {
+  width: 60px;
+  height: 60px;
+  margin-right: auto;
+  position: relative;  
+  margin: 0;
+}
+
+/*Hamburger Icon (the 3 lines)*/
+.hamburger-menu-icon span {
+  height: 5px;
+  width: 70%;
+  background-color: white;
+  border-radius: 25px;
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%)
+}
+.hamburger-menu-icon span:nth-child(1) {
+  top: 25%; 
+}
+.hamburger-menu-icon span:nth-child(3) {
+  top: 75%; 
+}
+
+/*Hamburger Icon Transofrmed into an X when clicked*/
+.hamburger-menu-icon.active span:nth-child(1) {
+  top: 50%; 
+  transition: .4s ease;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.hamburger-menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu-icon.active span:nth-child(3) {
+  top: 50%; 
+  transition: .4s ease;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/*=======Logged in profile=======*/
 .profile-container {
   height: 70px;
   width: 100px;
