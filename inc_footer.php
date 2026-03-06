@@ -1,6 +1,11 @@
 <footer id="footer">
     <div class="mainFlexbox">
+
+        <!--Links the CSS file to style the footer-->
+        <link rel="stylesheet" href="css/header_footer.css">
         
+        <!--1st section of the footer (left most)-->
+        <!--UM Logo and description below-->
         <div class="logo-text-container">
             <img src="images/umlogo.png" class="umlogo">
 
@@ -9,15 +14,19 @@
             </div>
         </div>
 
+        <!--2nd section of the footer (middle)-->
+        <!--Browse Section-->
         <div class="browse-container">
             <h3 style="font-family: 'Arial'; color: white">Browse</h3>
             <a id="browse-link" href="index.php">Home</a>
-            <a id="browse-link" href="location.php">Location</a>
-            <a id="browse-link" href="family.php">Family</a>
-            <a id="browse-link" href="use_category.php">Use Category</a>
-            <a id="browse-link" href="all_species.php">All Species</a>
+            <a id="browse-link" href="search_category.php?category=useCategory">Use Category</a>
+            <a id="browse-link" href="search_category.php?category=family">Family</a>
+            <a id="browse-link" href="search_category.php?category=location">Location</a>
+            <a id="browse-link" href="search_category.php?category=allSpecies">All Species</a>
         </div>
 
+        <!--3rd section of the footer (right most)-->
+        <!--Contacts Section-->
         <div>
             <h3 style="font-family: 'Arial'; color: white">Contact</h3>
             <a id="contact-link">E-mail</a>
@@ -25,8 +34,10 @@
 
     </div>
 
+    <!--White horizontal divider line-->
     <hr style="height: 2px; background-color: white;"> 
 
+    <!--Contents below horizontal divider line-->
     <div class="bottomFlexbox">
         <p style="color: white">Copyright. All Rights Reserved</p>
         <a href="#" style="text-decoration: none; color: white; margin-left: auto; ">Credits</a>

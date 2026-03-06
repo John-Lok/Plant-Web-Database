@@ -2,7 +2,8 @@ html, body {
   margin: 0px;
 }
 
-/*-------------------------Main header-------------------------------*/
+/*-------------------------HEADER-------------------------------*/
+/*========Header container========*/
 .topnav {
   border-bottom: 4px solid rgb(0, 0, 0);
   background-color: rgb(56, 56, 56);
@@ -32,17 +33,24 @@ hr {
   transition: 0.4s ease;
 }
 
-/*Text for the tabs*/
-ul li a {
-  text-decoration: none; 
-  color: white;
-  font-size: 30px;
-}
-
 /*Off screen menu properties when active*/
 .off-screen-dropdown-menu.active {
   left: 0;
   z-index: 10; 
+}
+
+/*Text for the tabs in the off screen menu*/
+ul li a {
+  text-decoration: none; 
+  color: white;
+  font-size: 30px;
+  font-family: 'Arial';
+}
+
+li a:hover {
+  background-color: rgb(155, 155, 155);
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 /*========Hamburger Menu Icon=======*/
@@ -55,7 +63,11 @@ ul li a {
   margin: 0;
 }
 
-/*Hamburger Icon (the 3 lines)*/
+.hamburger-menu-icon:hover {
+  background-color: rgb(155, 155, 155);
+}
+
+/*Hamburger Menu Icon (the 3 lines)*/
 .hamburger-menu-icon span {
   height: 5px;
   width: 70%;
@@ -120,8 +132,8 @@ ul li a {
   box-shadow: 0px 0px 5px black;
 }
 
-/*--------------------------------Footer-------------------------------*/
-/*========Main Footer=========*/
+/*--------------------------------FOOTER-------------------------------*/
+/*========Footer container=========*/
 #container {
   border-color: red; 
   min-height: 100%;

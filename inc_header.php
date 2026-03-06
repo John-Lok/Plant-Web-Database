@@ -1,14 +1,17 @@
 <body>
 
+    <!--Links the CSS file to style the header-->
+    <link rel="stylesheet" href="css/header_footer.css">
+
     <!--Off screen menu container and tabs-->
     <div class="off-screen-dropdown-menu">
         <ul style="list-style: none; padding: 0; margin: 0;">
 
             <li><a href="index.php">Home</a></li><hr>
-            <li><a href="use_category.php">Use Category</a></li><hr>
-            <li><a href="family.php">Family</a></li><hr>
-            <li><a href="location.php">Location</a></li><hr>
-            <li><a href="all_species.php">All Species</a></li><hr>
+            <li><a href="search_category.php?category=useCategory">Use Category</a></li><hr>
+            <li><a href="search_category.php?category=family">Family</a></li><hr>
+            <li><a href="search_category.php?category=location">Location</a></li><hr>
+            <li><a href="search_category.php?category=allSpecies">All Species</a></li><hr>
 
         </ul>
     </div>
