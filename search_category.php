@@ -49,23 +49,28 @@
             //Displays the query result from DB
             //Attaches the corresponding ID from DB into "data-id"
             while($row = mysqli_fetch_assoc($result)) { 
-                echo "<div class='tab-box' data-id=".$row["$id"].">".
+                echo "<div class='tab-box' 
+                       data-id=" . $row["$id"] . 
+                       " data-user-search='" . $row["$keyName"] . "'>" .
                         $row["$keyName"]
-                    ."</div>"; 
-
+                    . "</div>"; 
             }
         ?>
     </div>
 
     <!--Takes the value of "data-id" and puts it into a URL Parameter for the next page (result.php)-->
     <script>
-        document.querySelectorAll(".tab-box").forEach( box => {
+        const tabBox = document.querySelectorAll(".tab-box"); 
+        
+        
+        tabBox.forEach( box => {
 
             box.onclick = function() {
                 let id = parseInt(this.dataset.id); 
-                window.location.href = "result.php?id=" + id;window.location.href = "result.php?id=" + id;
+                let userChoice = encodeURIComponent(this.dataset.userSearch); 
+                window.location.href = "result.php?id=" + id + "&search=" + encodeURIComponent(this.dataset.userSearch);
             }
-        })
+        }) 
     </script>
 
     <!--CSS styling of parent tab-box container-->

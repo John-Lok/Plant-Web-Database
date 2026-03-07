@@ -11,6 +11,15 @@
 </head>
 <body>
     
+    <?php
+
+        $id = $_GET["id"];
+        $name = $_GET["search"];
+        
+        echo $name; 
+
+    ?>
+
 </body>
 </html>
 
