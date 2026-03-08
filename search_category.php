@@ -51,7 +51,8 @@
             while($row = mysqli_fetch_assoc($result)) { 
                 echo "<div class='tab-box' 
                        data-id=" . $row["$id"] . 
-                       " data-user-search='" . $row["$keyName"] . "'>" .
+                       " data-user-search='" . $row["$keyName"] . 
+                       "' data-category='" . $pageTitle . "'>" .  
                         $row["$keyName"]
                     . "</div>"; 
             }
@@ -66,9 +67,16 @@
         tabBox.forEach( box => {
 
             box.onclick = function() {
-                let id = parseInt(this.dataset.id); 
+
+                //For the breadcrumbs navigation
+                let category = encodeURIComponent(this.dataset.category); 
                 let userChoice = encodeURIComponent(this.dataset.userSearch); 
-                window.location.href = "result.php?id=" + id + "&search=" + encodeURIComponent(this.dataset.userSearch);
+
+                //For querying in the next page
+                let id = parseInt(this.dataset.id); 
+                
+                //Passes all the info into the URL parameters
+                window.location.href = "result.php?category=" + category + "&id=" + id + "&search=" + encodeURIComponent(this.dataset.userSearch);
             }
         }) 
     </script>
