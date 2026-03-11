@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <h1>What would you like to search by?</h1>
+    <h1>What would you like to search?</h1>
 
     <!--The tab boxes-->
     <div class="tab-box-container">

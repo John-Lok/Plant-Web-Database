@@ -3,7 +3,7 @@
     include('inc_back_button.php'); 
 
     //Logic to retrieve the data from what the user selected through URL Parameters
-    if ($_GET["category"] ==="useCategory") {
+    if ($_GET["category"] === "useCategory") {
         $sqlQuery = "SELECT * FROM use_category"; 
         $pageTitle = "Use Category"; 
         $keyName = "use_category";
@@ -47,7 +47,7 @@
             $result = mysqli_query($conn, $sqlQuery);
 
             //Displays the query result from DB
-            //Attaches the corresponding ID from DB into "data-id"
+            //Attaches the corresponding ID, pageTitle and keyName from DB into the "data-" attribute
             while($row = mysqli_fetch_assoc($result)) { 
                 echo "<div class='tab-box' 
                        data-id=" . $row["$id"] . 
@@ -70,13 +70,13 @@
 
                 //For the breadcrumbs navigation
                 let category = encodeURIComponent(this.dataset.category); 
-                let userChoice = encodeURIComponent(this.dataset.userSearch); 
+                let userSearch = encodeURIComponent(this.dataset.userSearch); 
 
                 //For querying in the next page
                 let id = parseInt(this.dataset.id); 
                 
                 //Passes all the info into the URL parameters
-                window.location.href = "result.php?category=" + category + "&id=" + id + "&search=" + encodeURIComponent(this.dataset.userSearch);
+                window.location.href = "result.php?category=" + category + "&id=" + id + "&search=" + userSearch;
             }
         }) 
     </script>
