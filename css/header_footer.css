@@ -1,5 +1,8 @@
 html, body {
   margin: 0px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /*-------------------------HEADER-------------------------------*/
@@ -199,3 +202,6 @@ li a:hover {
   align-items: center;
 }
 
+footer {
+  margin-top: auto;
+}

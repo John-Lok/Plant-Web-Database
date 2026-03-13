@@ -3,11 +3,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Alice's Plant Database</title>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/home.css">
 
     </head>
-    <body>            
+    <body>           
         <h1 class="homeTitle">Useful Plants of <br>Orang Asli in Peninsula Malaysia</h1>
             
         <!--Get Started button and its div container-->
@@ -27,11 +29,7 @@
     [LINK TO THE HEADER AND FOOTER CSS FILES] <- below the <title>
 </head>
 <body>
-    <div id="container">
-        <div id="main">
-            [MAIN CONTENT GOES HERE]
-        </div>
-    </div>
+    [MAIN CONTENT GOES HERE]
 </body>
 
 [LINK TO THE footer.php FILE] <- last line in the new page file

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2026 at 02:07 AM
+-- Generation Time: Mar 12, 2026 at 04:16 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -337,14 +337,14 @@ CREATE TABLE `user_account` (
 
 CREATE TABLE `use_category` (
   `use_category_id` int(10) UNSIGNED NOT NULL,
-  `use_category` varchar(100) NOT NULL
+  `category_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `use_category`
 --
 
-INSERT INTO `use_category` (`use_category_id`, `use_category`) VALUES
+INSERT INTO `use_category` (`use_category_id`, `category_name`) VALUES
 (1, 'Food'),
 (2, 'Medicine'),
 (3, 'Spiritual'),

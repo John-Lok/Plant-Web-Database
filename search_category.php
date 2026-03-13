@@ -1,26 +1,29 @@
 <?php 
     include('inc_header.php');
+    include('inc_configurations.php'); 
     include('inc_back_button.php'); 
 
+   $category = $_GET["category"]; 
+   $details = $config[$category];
+
     //Logic to retrieve the data from what the user selected through URL Parameters
-    if ($_GET["category"] === "useCategory") {
-        $sqlQuery = "SELECT * FROM use_category"; 
-        $pageTitle = "Use Category"; 
-        $keyName = "use_category";
-        $id = "use_category_id";
-    } elseif ($_GET["category"] === "family") {
-        $sqlQuery = "SELECT * FROM plant_family";
-        $pageTitle = "Plant Family";
-        $keyName = "family_name"; 
-        $id = "plant_family_id";
-    } elseif ($_GET["category"] === "location") {
-        $sqlQuery = "SELECT * FROM location_area"; 
-        $pageTitle = "Location Area";
-        $keyName = "area_name";
-        $id = "location_area_id";
-    } elseif ($_GET["category"] === "allSpecies") {
-        $sqlQuery = "SELECT * FROM plant_species"; 
+    if ($category === "useCategory") {
+
+        $sqlQuery = "SELECT * FROM " . $details["tableName"]; 
+
+    } elseif ($category === "family") {
+
+        $sqlQuery = "SELECT * FROM " . $details["tableName"]; 
+
+    } elseif ($category === "location") {
+
+        $sqlQuery = "SELECT * FROM " . $details["tableName"]; 
+
+    } elseif ($category === "allSpecies") {
+
+        $sqlQuery = "SELECT * FROM '$category'"; 
         //LINK IT TO RESULTS.PHP
+
     } else {
         echo "<strong>Invalid search category, please go back to the home page by clicking on the top-left icon (3 stacked lines)</strong>"; 
     } 
@@ -31,14 +34,16 @@
 <!DOCTYPE html>
 <head>
 
-    <title><?php echo $pageTitle ?></title>
-    <link rel="stylesheet" href="css/tab_box.css">
+    <title><?php echo $details["pageTitle"] ?></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/tab_box.css">    
 
 </head>
 <body>
 
     <!--Displays the title of the search category-->
-    <?php echo "<h1>".$pageTitle."</h1>"; ?>
+    <?php echo "<h1>".$details["pageTitle"]."</h1>"; ?>
 
     <div class='tab-box-container'>    
         <?php
@@ -46,14 +51,16 @@
             include('database_conn.php'); 
             $result = mysqli_query($conn, $sqlQuery);
 
+            
+
             //Displays the query result from DB
             //Attaches the corresponding ID, pageTitle and keyName from DB into the "data-" attribute
             while($row = mysqli_fetch_assoc($result)) { 
                 echo "<div class='tab-box' 
-                       data-id=" . $row["$id"] . 
-                       " data-user-search='" . $row["$keyName"] . 
-                       "' data-category='" . $pageTitle . "'>" .  
-                        $row["$keyName"]
+                       data-id=" . $row[$details["pkKey"]] . 
+                       " data-user-search='" . $row[$details["attriKey"]] . 
+                       "' data-category='" . $details["pageTitle"] . "'>" .  
+                        $row[$details["attriKey"]]
                     . "</div>"; 
             }
         ?>
