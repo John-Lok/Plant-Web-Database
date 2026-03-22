@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2026 at 04:16 AM
+-- Generation Time: Mar 22, 2026 at 10:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -183,8 +183,16 @@ INSERT INTO `plant_part` (`plant_part_id`, `part_name`) VALUES
 
 CREATE TABLE `plant_photo` (
   `plant_species_id` varchar(12) NOT NULL,
-  `photo` varchar(225) NOT NULL
+  `photo` varchar(225) NOT NULL,
+  `is_thumbnail_photo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `plant_photo`
+--
+
+INSERT INTO `plant_photo` (`plant_species_id`, `photo`, `is_thumbnail_photo`) VALUES
+('P10', 'images/plants/1P10.jpg', 1);
 
 -- --------------------------------------------------------
 
