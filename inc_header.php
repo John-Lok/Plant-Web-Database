@@ -8,10 +8,10 @@
         <ul style="list-style: none; padding: 0; margin: 0;">
 
             <li><a href="index.php">Home</a></li><hr>
-            <li><a href="search_category.php?category=useCategory">Use Category</a></li><hr>
-            <li><a href="search_category.php?category=family">Family</a></li><hr>
-            <li><a href="search_category.php?category=location">Location</a></li><hr>
-            <li><a href="search_category.php?category=allSpecies">All Species</a></li><hr>
+            <li><a onclick="window.location.href='search_category.php?category=' + encodeURI('Use Category')">Use Category</a></li><hr>
+            <li><a onclick="window.location.href='search_category.php?category=' + encodeURI('Family')">Family</a></li><hr>
+            <li><a onclick="window.location.href='search_category.php?category=' + encodeURI('Location')">Location</a></li><hr>
+            <li><a onclick="window.location.href='result.php?category=' + encodeURI('All Species')">All Species</a></li><hr>
 
         </ul>
     </div>

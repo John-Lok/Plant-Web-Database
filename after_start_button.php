@@ -15,10 +15,12 @@
 
     <!--The tab boxes-->
     <div class="tab-box-container">
-        <div class="tab-box" onclick="window.location.href='search_category.php?category=useCategory'">Use Category</div>
-        <div class="tab-box" onclick="window.location.href='search_category.php?category=family'">Family</div>
-        <div class="tab-box" onclick="window.location.href='search_category.php?category=location'">Location</a></div>
-        <div class="tab-box" onclick="window.location.href='search_category.php?category=allSpecies'">All Species</a></div>
+        <div class="tab-box" onclick="window.location.href='search_category.php?category=' + encodeURI('Use Category')">Use Category</div>
+        <div class="tab-box" onclick="window.location.href='search_category.php?category=' + encodeURI('Family')">Family</div>
+        <div class="tab-box" onclick="window.location.href='search_category.php?category=' + encodeURI('Location')">Location</a></div>
+        <div class="tab-box" onclick="window.location.href='result.php?category=' + encodeURI('All Species')">All Species</a></div>
+        <!--URL parameters with "category" key is passed to next page-->
+        <!--A specific value is assigned to the key depending on which tab box the user clicks-->
     </div>
 </body>
 

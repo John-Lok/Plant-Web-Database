@@ -3,38 +3,45 @@
     include('inc_configurations.php'); 
     include('inc_back_button.php'); 
 
-   $category = $_GET["category"]; 
-   $details = $config[$category];
+    //Grabs the URL Params value and assign it to $category
+    $category = $_GET["category"]; 
 
-    //Logic to retrieve the data from what the user selected through URL Parameters
-    if ($category === "useCategory") {
+    /*
+    If-else stmt is to check what value is in the URL Param 
 
-        $sqlQuery = "SELECT * FROM " . $details["tableName"]; 
+    Assigns the values of:  
+        1) Table Name
+        2) PK Attribute Name
+        3) Normal Attribute Name 
+    IN ACCORDance to the value of URL Param
 
-    } elseif ($category === "family") {
-
-        $sqlQuery = "SELECT * FROM " . $details["tableName"]; 
-
-    } elseif ($category === "location") {
-
-        $sqlQuery = "SELECT * FROM " . $details["tableName"]; 
-
-    } elseif ($category === "allSpecies") {
-
-        $sqlQuery = "SELECT * FROM '$category'"; 
-        //LINK IT TO RESULTS.PHP
-
+    NOTE: This logic is on the top most so that the variables declared in the logic can be used for everything below
+    */
+    if ($category === "Use Category") {
+        $tableName = "use_category";
+        $pkKey = "use_category_id"; 
+        $attriKey = "category_name";
+    } elseif ($category === "Family") {
+        $tableName = "plant_family";
+        $pkKey = "plant_family_id"; 
+        $attriKey = "family_name";
+    } elseif ($category === "Location") {
+        $tableName = "location_area";
+        $pkKey = "location_area_id"; 
+        $attriKey = "area_name";
     } else {
-        echo "<strong>Invalid search category, please go back to the home page by clicking on the top-left icon (3 stacked lines)</strong>"; 
-    } 
+        echo "<h1>Invalid URL Parameter!</h1>"; 
+        echo "<h1>Please go back to the 'Home' page by clicking the 3 lines icon on the top-left corner</h1>";
+    }
 
-//NOTE: This logic is on the top most so that the variables declared in the logic can be used with the HTML below
+    //SQL query
+    $sqlQuery = "SELECT * FROM " . $tableName; 
 ?>
 
 <!DOCTYPE html>
 <head>
 
-    <title><?php echo $details["pageTitle"] ?></title>
+    <title><?php echo $category; ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/tab_box.css">    
@@ -43,7 +50,7 @@
 <body>
 
     <!--Displays the title of the search category-->
-    <?php echo "<h1>".$details["pageTitle"]."</h1>"; ?>
+    <h1> <?php echo $category; ?> </h1>
 
     <div class='tab-box-container'>    
         <?php
@@ -51,45 +58,34 @@
             include('database_conn.php'); 
             $result = mysqli_query($conn, $sqlQuery);
 
-            
-
-            //Displays the query result from DB
-            //Attaches the corresponding ID, pageTitle and keyName from DB into the "data-" attribute
+            //Loops through every record in the DB till no more record left
+            //Sets the table as an associative array: Puts the attribute names as the KEY & for one record, the VALUE of it
             while($row = mysqli_fetch_assoc($result)) { 
-                echo "<div class='tab-box' 
-                       data-id=" . $row[$details["pkKey"]] . 
-                       " data-user-search='" . $row[$details["attriKey"]] . 
-                       "' data-category='" . $details["pageTitle"] . "'>" .  
-                        $row[$details["attriKey"]]
-                    . "</div>"; 
-            }
+        ?>
+
+            <!--For every one record in the DB: 
+                1) Outputs the "$attriKey" value into the tab box
+                2) Puts data into URL Params: 
+                    a) The same "category" value from what the user previously clicked on
+                    b) The "$attriKey" value (the text in the tab box) of the specific tab box clicked on
+                    c) The "$pkKey" value (that text's ID) of the specific tab box clicked on
+            -->
+
+            <div class="tab-box" 
+                onclick="window.location.href='result.php?category=<?php echo urlencode($category); ?>&subCategory=<?php echo urlencode($row[$attriKey]); ?>&subCategoryId=<?php echo $row[$pkKey] ?>'"> 
+                
+                <?php echo $row[$attriKey]; ?>
+
+            </div>
+
+        <!--Closing bracket for the while loop-->
+        <?php 
+            }; 
         ?>
     </div>
 
-    <!--Takes the value of "data-id" and puts it into a URL Parameter for the next page (result.php)-->
-    <script>
-        const tabBox = document.querySelectorAll(".tab-box"); 
-        
-        
-        tabBox.forEach( box => {
-
-            box.onclick = function() {
-
-                //For the breadcrumbs navigation
-                let category = encodeURIComponent(this.dataset.category); 
-                let userSearch = encodeURIComponent(this.dataset.userSearch); 
-
-                //For querying in the next page
-                let id = parseInt(this.dataset.id); 
-                
-                //Passes all the info into the URL parameters
-                window.location.href = "result.php?category=" + category + "&id=" + id + "&search=" + userSearch;
-            }
-        }) 
-    </script>
-
     <!--CSS styling of parent tab-box container-->
-    <!--For this page file only-->
+    <!--This CSS is only for this page file-->
     <style>
         html, body {
             margin: 0;
@@ -109,4 +105,4 @@
 
 </body>
 
-<?php include('inc_footer.php')?>
+<?php include('inc_footer.php'); ?>

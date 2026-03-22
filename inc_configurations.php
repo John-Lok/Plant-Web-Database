@@ -4,14 +4,14 @@ $config = [
         "pageTitle" => "Use Category",
         "tableName" => "use_category",
         "pkKey" => "use_category_id", 
-        "attriKey" => "category_name"
+        "attriKey" => "category_name",
     ], 
 
     "family" => [
         "pageTitle" => "Family",
         "tableName" => "plant_family",
         "pkKey" => "plant_family_id", 
-        "attriKey" => "family_name"
+        "attriKey" => "family_name", 
     ],
 
     "location" => [
