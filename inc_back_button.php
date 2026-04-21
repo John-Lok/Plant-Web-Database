@@ -1,6 +1,6 @@
 <body>
-
-    <button id="back-btn">Go Back</button>
+    <link rel="stylesheet" href="css/components.css">
+    <button id="back-btn" class="blue-btn">Go Back</button>
 
     <!--JS Code-->
     <script>
@@ -25,20 +25,8 @@
             top: 85%; 
             left: 2%; 
 
-            background-color: rgb(74, 146, 255);
-            height: 45px; 
-            width: 90px;
-            border: 4px solid rgb(12, 67, 150);
-            border-radius: 10px;
-            box-shadow: 1px 1px 6px black;
-
-            font-weight: bold; 
-            font-size: 17px;
-        }
-
-        #back-btn:hover {
-            color: rgb(74, 146, 255); 
-            background-color: black;           
+            padding: 5px;
+            font-size: 19px;
         }
     </style>
 

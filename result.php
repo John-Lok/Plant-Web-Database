@@ -1,20 +1,19 @@
 <?php 
-    include('inc_header.php'); 
+    require('inc_header.php'); 
     include('inc_back_button.php');
-    include('database_conn.php');
+    require('database_conn.php');
 
-    $category = $_GET["category"]; 
     /*
     Uses of each URL param value: 
         1) $category
-            - Use as the "identifier" to determine which SQL qeury to execute
+            - Use as the "identifier" to determine which SQL query to execute
             - To display the page's title according to what the user had clicked on
         2) $subCategory
+            - The many categories within a "Search Category" (e.g. Family -> Zingiberaceae [Zingiberaceae is the $subCategory])
             - For querying the correct results
             - To be apart of displaying the breadcrumbs navigation
-        3) $subCategory
+        3) $subCategoryId
             - For querying the correct results
-            - To be apart of displaying the breadcrumbs navigation
 
     Contains 2 nested if-else logic: 
         1st if-else use: 
@@ -23,12 +22,13 @@
             - Displays a page title
         2nd if-else use: 
             - Check what value is in $catergory
-            - Assigns a given SQL query that uses data from $subCategoryId to query the right results 
+            - Assigns a given SQL query that uses data from 3) param to query the right results 
             - Displays a breadcrumbs navigation
 
     Reason for 1st if-else: 
     "All Species" is a special case as it doesn't go through "search_category.php" unlike the others
     */
+    $category = $_GET["category"]; 
     if ($category === "All Species") {
         //Breadcrumbs Nav
         echo "<h1>{$category}</h1>"; 
@@ -39,7 +39,8 @@
                         SUBSTRING_INDEX(
                             GROUP_CONCAT(DISTINCT plant_english_name.english_name SEPARATOR ', '), 
                             ', ', 
-                            3) AS english_name
+                            3) AS english_name, 
+                        plant_species.plant_species_id
 
                     FROM plant_species 
 
@@ -71,7 +72,8 @@
                                 ', ', 
                                 3
                             ) AS english_name, 
-                            use_category.category_name
+                            use_category.category_name, 
+                            plant_species.plant_species_id
 
                         FROM plant_species 
 
@@ -93,13 +95,14 @@
                         GROUP BY plant_species.plant_species_id";
                         
         } elseif ($category === "Location") {
-            $sqlQuery = "SELECT DISTINCT 
+            $sqlQuery = "SELECT 
                             photo, 
                             scientific_name, 
                             SUBSTRING_INDEX(
                                 GROUP_CONCAT(DISTINCT plant_english_name.english_name SEPARATOR ', '), 
                                 ', ', 
-                                3) AS english_name
+                                3) AS english_name, 
+                            plant_species.plant_species_id
 
                         FROM plant_species
 
@@ -124,7 +127,8 @@
                             SUBSTRING_INDEX(
                                 GROUP_CONCAT(DISTINCT plant_english_name.english_name SEPARATOR ', '),
                                 ', ', 
-                                3) AS english_name
+                                3) AS english_name, 
+                            plant_species.plant_species_id
 
                         FROM plant_species
 
@@ -139,9 +143,11 @@
                         
                         GROUP BY plant_species.plant_species_id";
                         
-        } else {
-            echo "<h1>ERROR! Invalid category value. Return to Home page and try again</h1>";
-        }
+        } else { ?>
+            <script>
+                window.location.href="index.php"; 
+            </script>
+        <?php }
 
         //Prepared statement
         $stmt = mysqli_stmt_init($conn);
@@ -165,14 +171,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $category; ?></title>
-    <link rel="stylesheet" href="css/header_footer.php.css">
+    <link rel="stylesheet" href="css/result.css">
 </head>
 <body>
 
     <div class="result-card-container">
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?> 
+        <?php 
+        $id = "plant_species_id"; 
+        while ($row = mysqli_fetch_assoc($result)) { ?> 
     
-            <div class='result-card'>
+            <div class='result-card' onclick="window.location.href='plant_detail_page.php?speciesID=' + <?php echo $row[$id]; ?> + '&tab=' + encodeURI('Details')">
                 <div class="img-container"><img src="<?php echo $row["photo"]; ?>" alt="Plant Thumbnail Photo"></div>
                 <p><strong><u>Scientific Name: </u></strong><br><i><?php echo $row["scientific_name"]; ?></i></p>
                 <p><strong><u>Common Name: </u></strong><br><?php echo $row["english_name"]; ?></p>
@@ -184,66 +192,4 @@
 </body>
 </html>
 
-<?php include('inc_footer.php') ?>
-
-
-<!--
-    <div class="result-card-container">
-        <div class="result-card">
-            <div class="img-container"><img src="https://static.wixstatic.com/media/ef1aa2_8b8cbbc712a745a88832a5835d18166f.jpg/v1/fill/w_250,h_333,al_c,q_90,enc_auto/ef1aa2_8b8cbbc712a745a88832a5835d18166f.jpg"></div>
-            <p><u><strong>Scientific Name: </strong></u><br><i>Zingiber Otensii Alpha Beta Omega</i></p>
-            <p><u><strong>Common Name: </strong></u><br>Malaysian Ginger</p>
-            <p><u><strong>Use Category: </strong></u><br>Spiritual</p>
-            <p><u><strong>Specific Use: </strong></u><br>Exorcism</p>
-        </div>
-    </div>
--->
-
-    <style>
-        .result-card-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px; 
-            margin: 30px;
-        }
-
-        .result-card {
-            border: 4px solid black;
-            border-radius: 15px;
-            padding: 20px;
-            height: 300px; 
-            width: 250px; 
-            overflow: hidden;
-        }
-            
-        .img-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .result-card img {
-            width: 160px; 
-            height: 160px; 
-            object-fit: cover;
-
-            /*Stops the image from resizing on it's own when browser width becomes very small*/
-            flex-shrink: 0;
-        }
-
-        strong {
-            font-family: 'Arial'; 
-        }
-
-        p {
-            font-size: 18px;
-        }
-    </style>
-
-    <!--
-
-
-
-    -->
+<?php require('inc_footer.php') ?>

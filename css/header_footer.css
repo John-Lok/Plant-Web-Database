@@ -1,13 +1,21 @@
+/*-------------------------SETUP-------------------------------*/
 html, body {
   margin: 0px;
+
+  /*Converts the body into a flexbox for footer to stay at the bottom*/
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/*Ensures the footer stays at the bottom no matter the device screen dimensions*/
+footer {
+  margin-top: auto;
+}
+
 /*-------------------------HEADER-------------------------------*/
 /*========Header container========*/
-.topnav {
+.main-header-container {
   border-bottom: 4px solid rgb(0, 0, 0);
   background-color: rgb(56, 56, 56);
   min-height: 60px;
@@ -123,17 +131,28 @@ li a:hover {
 }
 
 /*=====Unlogged in profile=====*/
-.register-login-btn {
-  background-color: rgb(0, 161, 0);
+.login-btn {
   padding: 5px;
-  text-align: none;
-  color: white;
+  margin-left: auto; margin-right: 10px;
+
+  white-space: nowrap;
   font-family: 'Arial';
   font-size: 20px;
+  font-weight: bold;  
+
+  background-color: rgb(0, 161, 0);
+  color: white;
+
   border-radius: 8px;
   border: none;
   box-shadow: 0px 0px 5px black;
 }
+
+.login-btn:hover {
+  background-color: white;
+  color: rgb(0, 161, 0); 
+  transition: 0.2s ease;
+} 
 
 /*--------------------------------FOOTER-------------------------------*/
 /*========Footer container=========*/
@@ -202,6 +221,3 @@ li a:hover {
   align-items: center;
 }
 
-footer {
-  margin-top: auto;
-}

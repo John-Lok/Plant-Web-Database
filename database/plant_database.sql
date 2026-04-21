@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2026 at 10:59 AM
+-- Generation Time: Apr 21, 2026 at 10:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -70,7 +70,7 @@ INSERT INTO `location_area` (`location_area_id`, `area_name`, `community`, `addr
 --
 
 CREATE TABLE `plant_english_name` (
-  `plant_species_id` varchar(12) NOT NULL,
+  `plant_species_id` int(10) UNSIGNED NOT NULL,
   `english_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -79,18 +79,18 @@ CREATE TABLE `plant_english_name` (
 --
 
 INSERT INTO `plant_english_name` (`plant_species_id`, `english_name`) VALUES
-('P1', 'Hances tanbark'),
-('P2', 'Shell gingers'),
-('P3', 'Common tumeric'),
-('P4', 'Malaysian ginger'),
-('P5', 'Edible banana'),
-('P6', 'Lemongrass'),
-('P7', 'Chempedak'),
-('P8', 'Giant cane'),
-('P9', 'Mother-in-law plant'),
-('P9', 'Poison arum'),
-('P10', 'Goosegrass'),
-('P3', 'X-ray plant');
+(1, 'Hances tanbark'),
+(2, 'Shell gingers'),
+(3, 'Common tumeric'),
+(4, 'Malaysian ginger'),
+(5, 'Edible banana'),
+(6, 'Lemongrass'),
+(7, 'Chempedak'),
+(8, 'Giant cane'),
+(9, 'Mother-in-law plant'),
+(9, 'Poison arum'),
+(10, 'Goosegrass'),
+(3, 'X-ray plant');
 
 -- --------------------------------------------------------
 
@@ -182,7 +182,7 @@ INSERT INTO `plant_part` (`plant_part_id`, `part_name`) VALUES
 --
 
 CREATE TABLE `plant_photo` (
-  `plant_species_id` varchar(12) NOT NULL,
+  `plant_species_id` int(10) UNSIGNED NOT NULL,
   `photo` varchar(225) NOT NULL,
   `is_thumbnail_photo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -192,7 +192,14 @@ CREATE TABLE `plant_photo` (
 --
 
 INSERT INTO `plant_photo` (`plant_species_id`, `photo`, `is_thumbnail_photo`) VALUES
-('P10', 'images/plants/1P10.jpg', 1);
+(3, 'images/plants/3_curcuma_longa/3img1.jpg', 0),
+(3, 'images/plants/3_curcuma_longa/3img2.jpg', 1),
+(3, 'images/plants/3_curcuma_longa/3img3.jpg', 0),
+(3, 'images/plants/3_curcuma_longa/3img4.jpg', 0),
+(3, 'images/plants/3_curcuma_longa/3img5.jpg', 0),
+(3, 'images/plants/3_curcuma_longa/3img6.jpg', 0),
+(3, 'images/plants/3_curcuma_longa/3img7.jpg', 0),
+(3, 'images/plants/3_curcuma_longa/3img8.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -202,7 +209,7 @@ INSERT INTO `plant_photo` (`plant_species_id`, `photo`, `is_thumbnail_photo`) VA
 
 CREATE TABLE `plant_record` (
   `plant_record_id` int(10) UNSIGNED NOT NULL,
-  `plant_species_id` varchar(12) NOT NULL,
+  `plant_species_id` int(10) UNSIGNED NOT NULL,
   `location_area_id` int(10) UNSIGNED NOT NULL,
   `elevation` int(4) DEFAULT NULL,
   `coordinate` varchar(25) DEFAULT NULL,
@@ -216,16 +223,16 @@ CREATE TABLE `plant_record` (
 --
 
 INSERT INTO `plant_record` (`plant_record_id`, `plant_species_id`, `location_area_id`, `elevation`, `coordinate`, `collection_date`, `informant`, `other_notes`) VALUES
-(1, 'P1', 3, 555, 'N04.42494⁰, E101.52016⁰', '2023-10-20', 'Nadia, Diyana', NULL),
-(2, 'P2', 3, 1013, 'N04.44039⁰, E101.46371⁰', '2024-05-26', 'Amran', NULL),
-(3, 'P2', 3, 983, 'N04.44038⁰, E101.46615⁰', '2024-11-24', 'Paleng, Amran', NULL),
-(4, 'P3', 1, 680, 'N04.43461⁰, E101.49582⁰', '2024-02-28', 'Tok Batin Masnan', NULL),
-(5, 'P3', 2, NULL, 'N04.42587⁰, E101.52020⁰', '2023-10-19', 'Jamal Bah Ubi and Ramli ', NULL),
-(6, 'P3', 2, NULL, NULL, '2023-10-19', 'Jamal Bah Ubi and Ramli ', NULL),
-(7, 'P3', 3, 1031, 'N04.44223⁰, E101.46415⁰', '2023-10-20', 'Siti', NULL),
-(8, 'P4', 3, 1030, 'N04.44233⁰, E101.46420⁰', '2023-10-20', 'Tok Batin Masnan', NULL),
-(9, 'P5', 1, 690, 'N04.43479⁰, E101.49665⁰', '2024-05-27', 'Tok Batin Masnan', NULL),
-(10, 'P5', 3, 1006, 'N04.44060⁰, E101.46348⁰', '2024-05-26', 'Amran', NULL);
+(1, 1, 3, 555, 'N04.42494⁰, E101.52016⁰', '2023-10-20', 'Nadia, Diyana', NULL),
+(2, 2, 3, 1013, 'N04.44039⁰, E101.46371⁰', '2024-05-26', 'Amran', NULL),
+(3, 2, 3, 983, 'N04.44038⁰, E101.46615⁰', '2024-11-24', 'Paleng, Amran', NULL),
+(4, 3, 1, 680, 'N04.43461⁰, E101.49582⁰', '2024-02-28', 'Tok Batin Masnan', NULL),
+(5, 3, 2, NULL, 'N04.42587⁰, E101.52020⁰', '2023-10-19', 'Jamal Bah Ubi and Ramli ', NULL),
+(6, 3, 2, NULL, NULL, '2023-10-19', 'Jamal Bah Ubi and Ramli ', NULL),
+(7, 3, 3, 1031, 'N04.44223⁰, E101.46415⁰', '2023-10-20', 'Siti', NULL),
+(8, 4, 3, 1030, 'N04.44233⁰, E101.46420⁰', '2023-10-20', 'Tok Batin Masnan', NULL),
+(9, 5, 1, 690, 'N04.43479⁰, E101.49665⁰', '2024-05-27', 'Tok Batin Masnan', NULL),
+(10, 5, 3, 1006, 'N04.44060⁰, E101.46348⁰', '2024-05-26', 'Amran', NULL);
 
 -- --------------------------------------------------------
 
@@ -234,8 +241,8 @@ INSERT INTO `plant_record` (`plant_record_id`, `plant_species_id`, `location_are
 --
 
 CREATE TABLE `plant_species` (
-  `plant_species_id` varchar(12) NOT NULL,
-  `plant_family_id` int(10) UNSIGNED NOT NULL,
+  `plant_species_id` int(10) UNSIGNED NOT NULL,
+  `plant_family_Id` int(10) UNSIGNED NOT NULL,
   `scientific_name` varchar(100) NOT NULL,
   `vegetation_type` varchar(50) NOT NULL,
   `soil` varchar(50) NOT NULL,
@@ -251,17 +258,17 @@ CREATE TABLE `plant_species` (
 -- Dumping data for table `plant_species`
 --
 
-INSERT INTO `plant_species` (`plant_species_id`, `plant_family_id`, `scientific_name`, `vegetation_type`, `soil`, `height`, `diameter`, `flowering_season`, `fruiting_season`, `flowering_desc`, `fruiting_desc`) VALUES
-('P1', 1, 'Lithocarpus hancei', 'Tree', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
-('P10', 4, 'Eleusine indica', 'Grass', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
-('P2', 2, 'Alpinia zerumbet', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
-('P3', 2, 'Curcuma longa', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
-('P4', 2, 'Zingiber ottensii', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
-('P5', 3, 'Musa acuminata', 'Herb', 'Loam', '3.8', NULL, NULL, NULL, NULL, NULL),
-('P6', 4, 'Cymbopogan citratus', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
-('P7', 5, 'Artocarpus integer', 'Tree', 'Loam', '40.0', NULL, NULL, NULL, NULL, NULL),
-('P8', 4, 'Arundinaria gigantea', 'Tree', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
-('P9', 6, 'Dieffenbachia seguine\r\n', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `plant_species` (`plant_species_id`, `plant_family_Id`, `scientific_name`, `vegetation_type`, `soil`, `height`, `diameter`, `flowering_season`, `fruiting_season`, `flowering_desc`, `fruiting_desc`) VALUES
+(1, 1, 'Lithocarpus hancei', 'Tree', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 2, 'Alpinia zerumbet', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 2, 'Curcuma longa', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 2, 'Zingiber ottensii', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 3, 'Musa acuminata', 'Herb', 'Loam', '3.8', NULL, NULL, NULL, NULL, NULL),
+(6, 4, 'Cymbopogan citratus', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 5, 'Artocarpus integer', 'Tree', 'Loam', '40.0', NULL, NULL, NULL, NULL, NULL),
+(8, 4, 'Arundinaria gigantea', 'Tree', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 6, 'Dieffenbachia seguine\r\n', 'Herb', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 4, 'Eleusine indica', 'Grass', 'Loam', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -271,7 +278,7 @@ INSERT INTO `plant_species` (`plant_species_id`, `plant_family_id`, `scientific_
 
 CREATE TABLE `specific_use` (
   `specific_use_id` int(10) UNSIGNED NOT NULL,
-  `plant_species_id` varchar(12) NOT NULL,
+  `plant_species_id` int(10) UNSIGNED NOT NULL,
   `use_category_id` int(10) UNSIGNED NOT NULL,
   `specific_use_desc` varchar(100) NOT NULL,
   `prep_method_1` text DEFAULT NULL,
@@ -283,14 +290,14 @@ CREATE TABLE `specific_use` (
 --
 
 INSERT INTO `specific_use` (`specific_use_id`, `plant_species_id`, `use_category_id`, `specific_use_desc`, `prep_method_1`, `prep_method_2`) VALUES
-(1, 'P1', 5, 'Firewood', NULL, NULL),
-(2, 'P2', 3, 'Exorcism and Funeral', 'Add water to the plant. After that, do prayers and then sprinkle the water on the people as protection.  ', NULL),
-(3, 'P2', 2, 'Treat sickliness believed to be from supernatural origin. ', 'The leaves are tied in a bundle. It is then waved at the possessed patient while the priest says incantations. ', NULL),
-(4, 'P3', 1, 'Food', 'Blender and cooked together with meat. ', NULL),
-(5, 'P3', 2, 'To detect whether someone has sickness within. ', 'If the person has sickness, then leaves will move in a certain manner and produce a certain sound. ', NULL),
-(6, 'P3', 2, 'To treat miscellaneous sickness. ', 'Crush the leaves, add water and sprinkle the plant water to the patient. ', NULL),
-(7, 'P3', 3, 'Exorcism  ', 'Crush and grade the roots. Then add water. Sprinkle the product onto the possesed patient. ', NULL),
-(8, 'P4', 3, 'Exorcism', 'Crush and grade the roots. Then add water. Sprinkle the product onto the possesed patient. ', NULL);
+(1, 1, 5, 'Firewood', NULL, NULL),
+(2, 2, 3, 'Exorcism and Funeral', 'Add water to the plant. After that, do prayers and then sprinkle the water on the people as protection.  ', NULL),
+(3, 2, 2, 'Treat sickliness believed to be from supernatural origin. ', 'The leaves are tied in a bundle. It is then waved at the possessed patient while the priest says incantations. ', NULL),
+(4, 3, 1, 'Food', 'Blender and cooked together with meat. ', NULL),
+(5, 3, 2, 'To detect whether someone has sickness within. ', 'If the person has sickness, then leaves will move in a certain manner and produce a certain sound. ', NULL),
+(6, 3, 2, 'To treat miscellaneous sickness. ', 'Crush the leaves, add water and sprinkle the plant water to the patient. ', NULL),
+(7, 3, 3, 'Exorcism  ', 'Crush and grade the roots. Then add water. Sprinkle the product onto the possesed patient. ', NULL),
+(8, 4, 3, 'Exorcism', 'Crush and grade the roots. Then add water. Sprinkle the product onto the possesed patient. ', NULL);
 
 -- --------------------------------------------------------
 
@@ -328,14 +335,42 @@ INSERT INTO `specific_use_part` (`specific_use_id`, `plant_part_id`) VALUES
 
 CREATE TABLE `user_account` (
   `user_id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `ic_number` int(20) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `identity_number` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `phone_number` varchar(20) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `address` varchar(100) NOT NULL,
-  `role` enum('user','admin') NOT NULL DEFAULT 'user'
+  `role_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_account`
+--
+
+INSERT INTO `user_account` (`user_id`, `username`, `identity_number`, `password`, `phone_number`, `email`, `address`, `role_id`) VALUES
+(1, 'Lok Yuan Xue', '080512140203', 'Prestige@MC2008', '601110596236', 'lokyuanxue@gmail.com', 'Faculty of Information Technology, Universiti Malaya, 50600, KL', 2),
+(2, 'ExAdminName', '12345', 'ExPassword', '12345', 'example@gmail.com', 'ExAddress', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `role_id` int(10) UNSIGNED NOT NULL,
+  `role_name` varchar(20) NOT NULL,
+  `role_rank` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`role_id`, `role_name`, `role_rank`) VALUES
+(1, 'admin', 10),
+(2, 'master admin', 20);
 
 -- --------------------------------------------------------
 
@@ -414,23 +449,23 @@ ALTER TABLE `plant_photo`
 --
 ALTER TABLE `plant_record`
   ADD PRIMARY KEY (`plant_record_id`),
-  ADD KEY `fk_species_record` (`plant_species_id`),
-  ADD KEY `fk_location_area_plant_record` (`location_area_id`);
+  ADD KEY `fk_location_area_plant_record` (`location_area_id`),
+  ADD KEY `fk_species_record` (`plant_species_id`);
 
 --
 -- Indexes for table `plant_species`
 --
 ALTER TABLE `plant_species`
   ADD PRIMARY KEY (`plant_species_id`),
-  ADD KEY `fk_family_species` (`plant_family_id`);
+  ADD KEY `fk_family_species` (`plant_family_Id`);
 
 --
 -- Indexes for table `specific_use`
 --
 ALTER TABLE `specific_use`
   ADD PRIMARY KEY (`specific_use_id`),
-  ADD KEY `fk_species_specific_use` (`plant_species_id`),
-  ADD KEY `fk_use_category_specific_use` (`use_category_id`);
+  ADD KEY `fk_use_category_specific_use` (`use_category_id`),
+  ADD KEY `fk_species_specific_use` (`plant_species_id`);
 
 --
 -- Indexes for table `specific_use_part`
@@ -443,7 +478,14 @@ ALTER TABLE `specific_use_part`
 -- Indexes for table `user_account`
 --
 ALTER TABLE `user_account`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `fk_user_role` (`role_id`);
+
+--
+-- Indexes for table `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`role_id`);
 
 --
 -- Indexes for table `use_category`
@@ -495,7 +537,7 @@ ALTER TABLE `plant_record`
 -- AUTO_INCREMENT for table `plant_species`
 --
 ALTER TABLE `plant_species`
-  MODIFY `plant_family_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `plant_species_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `specific_use`
@@ -507,7 +549,13 @@ ALTER TABLE `specific_use`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_role`
+--
+ALTER TABLE `user_role`
+  MODIFY `role_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `use_category`
@@ -554,7 +602,7 @@ ALTER TABLE `plant_record`
 -- Constraints for table `plant_species`
 --
 ALTER TABLE `plant_species`
-  ADD CONSTRAINT `fk_family_species` FOREIGN KEY (`plant_family_id`) REFERENCES `plant_family` (`plant_family_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_family_species` FOREIGN KEY (`plant_family_Id`) REFERENCES `plant_family` (`plant_family_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `specific_use`
@@ -569,6 +617,12 @@ ALTER TABLE `specific_use`
 ALTER TABLE `specific_use_part`
   ADD CONSTRAINT `fk_plant_part` FOREIGN KEY (`plant_part_id`) REFERENCES `plant_part` (`plant_part_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_specific_use` FOREIGN KEY (`specific_use_id`) REFERENCES `specific_use` (`specific_use_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_account`
+--
+ALTER TABLE `user_account`
+  ADD CONSTRAINT `fk_user_role` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

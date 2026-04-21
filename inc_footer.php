@@ -19,10 +19,10 @@
         <div class="browse-container">
             <h3 style="font-family: 'Arial'; color: white">Browse</h3>
             <a id="browse-link" href="index.php">Home</a>
-            <a id="browse-link" href="search_category.php?category=useCategory">Use Category</a>
-            <a id="browse-link" href="search_category.php?category=family">Family</a>
-            <a id="browse-link" href="search_category.php?category=location">Location</a>
-            <a id="browse-link" href="search_category.php?category=allSpecies">All Species</a>
+            <a id="browse-link" onclick="window.location.href='search_category.php?category=' + encodeURI('Use Category')">Use Category</a>
+            <a id="browse-link" onclick="window.location.href='search_category.php?category=' + encodeURI('Family')">Family</a>
+            <a id="browse-link" onclick="window.location.href='search_category.php?category=' + encodeURI('Location')">Location</a>
+            <a id="browse-link" onclick="window.location.href='result.php?category=' + encodeURI('All Species')">All Species</a>
         </div>
 
         <!--3rd section of the footer (right most)-->

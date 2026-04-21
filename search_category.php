@@ -1,9 +1,7 @@
 <?php 
-    include('inc_header.php');
-    include('inc_configurations.php'); 
+    require('inc_header.php');
     include('inc_back_button.php'); 
 
-    //Grabs the URL Params value and assign it to $category
     $category = $_GET["category"]; 
 
     /*
@@ -13,9 +11,9 @@
         1) Table Name
         2) PK Attribute Name
         3) Normal Attribute Name 
-    IN ACCORDance to the value of URL Param
+    IN ACCORDANCE to the value of URL Param
 
-    NOTE: This logic is on the top most so that the variables declared in the logic can be used for everything below
+    NOTE: This logic is on the top most so that the variables declared from this logic can be used for everything below
     */
     if ($category === "Use Category") {
         $tableName = "use_category";
@@ -29,10 +27,11 @@
         $tableName = "location_area";
         $pkKey = "location_area_id"; 
         $attriKey = "area_name";
-    } else {
-        echo "<h1>Invalid URL Parameter!</h1>"; 
-        echo "<h1>Please go back to the 'Home' page by clicking the 3 lines icon on the top-left corner</h1>";
-    }
+    } else { ?>
+        <script>
+            window.location.href="index.php"; 
+        </script>
+    <?php }
 
     //SQL query
     $sqlQuery = "SELECT * FROM " . $tableName; 
@@ -44,7 +43,6 @@
     <title><?php echo $category; ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/tab_box.css">    
 
 </head>
 <body>
@@ -105,4 +103,4 @@
 
 </body>
 
-<?php include('inc_footer.php'); ?>
+<?php require('inc_footer.php'); ?>

@@ -1,4 +1,4 @@
-<?php include('inc_header.php') ?>
+<?php require('inc_header.php') ?>
 
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/after_start_button.css">
-    <link rel="stylesheet" href="css/tab_box.css">
+    <link rel="stylesheet" href="css/components.css">
 
 </head>
 <body>
@@ -19,8 +19,8 @@
         <div class="tab-box" onclick="window.location.href='search_category.php?category=' + encodeURI('Family')">Family</div>
         <div class="tab-box" onclick="window.location.href='search_category.php?category=' + encodeURI('Location')">Location</a></div>
         <div class="tab-box" onclick="window.location.href='result.php?category=' + encodeURI('All Species')">All Species</a></div>
-        <!--URL parameters with "category" key is passed to next page-->
-        <!--A specific value is assigned to the key depending on which tab box the user clicks-->
+        <!--A URL parameter with "category" key is passed to next page-->
+        <!--A specific value is assigned to that key depending on which tab box the user clicks-->
     </div>
 </body>
 
@@ -50,4 +50,4 @@
 
 </html>
 
-<?php include('inc_footer.php') ?>
+<?php require('inc_footer.php') ?>

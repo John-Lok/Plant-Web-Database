@@ -1,6 +1,4 @@
-<body>
-
-    <!--Links the CSS file to style the header-->
+<header>
     <link rel="stylesheet" href="css/header_footer.css">
 
     <!--Off screen menu container and tabs-->
@@ -16,8 +14,8 @@
         </ul>
     </div>
 
-    <!--Navigation Header Container-->
-    <div class="topnav">
+    <!--Header Container-->
+    <div class="main-header-container">
 
         <!--Hamburger Menu Icon-->
         <div class="hamburger-menu-icon">
@@ -37,17 +35,28 @@
             })
         </script>
 
-        <!--Navigation Header Title-->
-        <p style="font-size: 50px; color: white; margin: 0px; padding: 0px; ">TITLE</p>
+        <!--Header Title-->
+        <p style="font-size: 50px; color: white; margin: 0px; padding: 0px; white-space: nowrap; overflow:hidden; text-overflow: ellipsis;">THE PLANT USE DATABASE</p>
+
+        <!--Login & Logout Button-->
+        <?php
+            session_start(); 
+
+            if (!isset($_SESSION["roleRank"])) { ?>
+                <button onclick="window.location.href='login.php'" class="login-btn">
+                    Log in
+                </button>
+                
+            <?php } else { ?>
+                <button onclick="window.location.href='logout.php'" class="login-btn">
+                    Log out
+                </button>
+        <?php } ?>
 
     </div>
-
-</body>
+</header>
 
 <!--                        
-            <button class="register-login-btn" style="margin-left: auto;">
-                <strong>Register</strong>
-            </button>
             <button class="register-login-btn" style="margin-left: 8px; margin-right: 8px;">
                 <strong>Log in</strong>
             </button>

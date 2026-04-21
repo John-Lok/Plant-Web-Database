@@ -1,0 +1,74 @@
+/*==========Form Containers==========*/
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 70px auto;
+
+    height: auto;
+    width: 40vh;
+
+    border: 5px solid black;
+    border-radius: 10px;
+    font-family: 'Arial';
+}
+
+form {
+    width: 25vh;
+    height: 25vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px; 
+
+    font-size: 2vh;
+}
+/*==========Elements in "form-container"==========*/
+/*Welcome message*/ 
+h1 {
+    text-align: center;
+    margin: 10px; 
+
+    font-size: 5vh;
+}
+
+/*Login Title*/ 
+h2 {
+    margin: 10px;
+
+    font-size: 4vh;
+    text-decoration: underline;
+}
+
+/*Label and Input*/
+.label-input-container {
+    width: auto; 
+    height: auto; 
+}
+
+input.input-field {
+    border: 3px solid  rgb(12, 67, 150);
+    border-radius: 10px;
+    background-color: rgba(74, 146, 255, 0.43);
+
+    height: 4vh;
+    width: 25vh;
+}
+
+input.input-field:focus {
+    outline: none;
+    border: 3px solid rgb(74, 146, 255);
+}
+
+/*Submit Button*/
+#submit-btn {
+    margin-top: 1vh;
+    font-size: 1.5em;
+
+    font-weight: bold;
+    padding: 1vh;
+}

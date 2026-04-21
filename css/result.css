@@ -1,0 +1,44 @@
+.result-card-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px; 
+    margin: 30px;
+}
+
+.result-card {
+    border: 4px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    height: 300px; 
+    width: 250px; 
+    overflow: hidden;
+}
+
+.result-card:hover {
+    background-color: rgb(155, 155, 155);
+}
+    
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-card img {
+    width: 160px; 
+    height: 160px; 
+    object-fit: cover;
+
+    /*Stops the image from resizing on it's own when browser width becomes very small*/
+    flex-shrink: 0;
+}
+
+strong {
+    font-family: 'Arial'; 
+}
+
+p {
+    font-size: 18px;
+}
